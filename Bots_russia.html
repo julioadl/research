@@ -11807,31 +11807,6 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[17]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># import the clustering data sets</span>
-
-<span class="n">true_remain</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;mc_true_remain.csv&#39;</span><span class="p">)</span>
-<span class="n">true_leave</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;mc_true_leave_excel.xlsx&#39;</span><span class="p">)</span>
-<span class="n">true_remain</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;cluster&#39;</span><span class="p">,</span><span class="s1">&#39;counts&#39;</span><span class="p">,</span> <span class="s2">&quot;week&quot;</span><span class="p">,</span> <span class="s2">&quot;wrong&quot;</span><span class="p">],</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">true_remain</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">true_leave</span><span class="p">)[</span><span class="n">true_remain</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">tolist</span><span class="p">()]</span>
-
-<span class="n">data</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;timestamp&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;T&#39;</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">str</span>
-<span class="n">data</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">])</span>
-
-<span class="n">clustered_data_csv</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-<span class="n">clustered_data_csv</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">clustered_data_csv</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\r</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39; &#39;</span><span class="p">)</span>
-<span class="n">clustered_data_csv</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;clustered_data_csv.csv&#39;</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
 <div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
@@ -11921,7 +11896,7 @@ IRAhandle_tweets_13.csv
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;[235]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># import if other import doens&#39;t work</span>
@@ -11938,7 +11913,7 @@ IRAhandle_tweets_13.csv
 <span class="n">el</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;IRAhandle_tweets_11.csv&#39;</span><span class="p">)</span>
 <span class="n">tw</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;IRAhandle_tweets_12_XL.xlsx&#39;</span><span class="p">)</span>
 <span class="n">th</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;IRAhandle_tweets_13.csv&#39;</span><span class="p">)</span>
-<span class="n">frame</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">f</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">fo</span><span class="p">,</span> <span class="n">fi</span><span class="p">,</span> <span class="n">si</span><span class="p">,</span> <span class="n">se</span><span class="p">,</span> <span class="n">ei</span><span class="p">,</span> <span class="n">ni</span><span class="p">,</span> <span class="n">ten</span><span class="p">,</span> <span class="n">el</span><span class="p">,</span> <span class="n">tw</span><span class="p">,</span> <span class="n">th</span><span class="p">])</span>
+<span class="n">frames</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">f</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">fo</span><span class="p">,</span> <span class="n">fi</span><span class="p">,</span> <span class="n">si</span><span class="p">,</span> <span class="n">se</span><span class="p">,</span> <span class="n">ei</span><span class="p">,</span> <span class="n">ni</span><span class="p">,</span> <span class="n">ten</span><span class="p">,</span> <span class="n">el</span><span class="p">,</span> <span class="n">tw</span><span class="p">,</span> <span class="n">th</span><span class="p">])</span>
 </pre></div>
 
 </div>
@@ -11951,8 +11926,11 @@ IRAhandle_tweets_13.csv
 <div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">screen_names</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">OG_data</span><span class="p">[</span><span class="s1">&#39;screen_name&#39;</span><span class="p">]))</span>
-<span class="n">russia_acc</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">frame</span><span class="p">[</span><span class="s1">&#39;author&#39;</span><span class="p">]))</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># creates a set of all account names in the brexit and bot data set</span>
+<span class="c1"># make everything lower case as bot data is caps only</span>
+
+<span class="n">screen_names</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">OG_data</span><span class="p">[</span><span class="s1">&#39;screen_name&#39;</span><span class="p">]))</span>
+<span class="n">russia_acc</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">frames</span><span class="p">[</span><span class="s1">&#39;author&#39;</span><span class="p">]))</span>
 <span class="n">russia_acc_low</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">russia_acc</span><span class="p">]</span>
 <span class="n">screen_name_low</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">screen_names</span><span class="p">]</span>
 <span class="n">OG_data</span><span class="p">[</span><span class="s1">&#39;screen_name_low&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">OG_data</span><span class="p">[</span><span class="s1">&#39;screen_name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="c1"># make name in OG date lowerstring </span>
@@ -11970,6 +11948,8 @@ IRAhandle_tweets_13.csv
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># create list of all bots account in brexit data</span>
 <span class="c1"># it is all lower case. remember when merging</span>
+<span class="c1"># loops over the brexit account names and adds the ones that are in the bot data to a list</span>
+<span class="c1"># output is list containing all bot accounts in the brexit data</span>
 <span class="n">bot_acc</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">screen_name_low</span><span class="p">:</span>
     <span class="k">if</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">russia_acc_low</span><span class="p">:</span>
@@ -11986,7 +11966,7 @@ IRAhandle_tweets_13.csv
 <div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># brexit data with bianry bot column</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># brexit data with binary bot column</span>
 <span class="n">bot_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">bot_acc</span><span class="p">)</span>
 <span class="n">bot_df</span><span class="p">[</span><span class="s1">&#39;bot&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span> 
 <span class="n">bot_df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;screen_name_low&#39;</span><span class="p">,</span> <span class="s1">&#39;bot&#39;</span><span class="p">]</span> <span class="c1"># dataframe with all UK accoutns that are bots</span>
@@ -12000,13 +11980,13 @@ IRAhandle_tweets_13.csv
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="prompt input_prompt">In&nbsp;[252]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># russia data set</span>
-<span class="n">frame</span><span class="p">[</span><span class="s1">&#39;screen_name_low&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">frame</span><span class="p">[</span><span class="s1">&#39;author&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+<span class="n">frames</span><span class="p">[</span><span class="s1">&#39;screen_name_low&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">frames</span><span class="p">[</span><span class="s1">&#39;author&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
 <span class="c1"># only select russian accounts that are in Brexit data, otherwise later too big to merge</span>
-<span class="n">russia_UK_bots</span> <span class="o">=</span> <span class="n">frame</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">bot_df</span><span class="p">,</span> <span class="s2">&quot;left&quot;</span><span class="p">,</span> <span class="n">on</span> <span class="o">=</span> <span class="s1">&#39;screen_name_low&#39;</span><span class="p">)</span> <span class="c1"># russia data with bot column for UK accounts</span>
+<span class="n">russia_UK_bots</span> <span class="o">=</span> <span class="n">frames</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">bot_df</span><span class="p">,</span> <span class="s2">&quot;left&quot;</span><span class="p">,</span> <span class="n">on</span> <span class="o">=</span> <span class="s1">&#39;screen_name_low&#39;</span><span class="p">)</span> <span class="c1"># russia data with bot column for UK accounts</span>
 <span class="n">russia_UK_bots</span> <span class="o">=</span> <span class="n">russia_UK_bots</span><span class="p">[</span><span class="n">russia_UK_bots</span><span class="p">[</span><span class="s1">&#39;bot&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span> <span class="c1"># keep only accounts that are also in brexit data</span>
 </pre></div>
 
@@ -12032,7 +12012,7 @@ IRAhandle_tweets_13.csv
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># found two NA values in text from the orgiginal data. should have deleted at the beginning but didnt see therefore deleting now</span>
 <span class="n">OG_data_bots</span> <span class="o">=</span> <span class="n">OG_data_bots</span><span class="p">[</span><span class="n">OG_data_bots</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">notnull</span><span class="p">()]</span>
-<span class="c1"># number of times tweet appears, ergo number of times tweet gets retweeted or reposted</span>
+<span class="c1"># counts: number of times tweet appears, ergo number of times tweet gets retweeted or reposted</span>
 <span class="n">counts</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">OG_data_bots</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;text&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;counts&#39;</span><span class="p">))</span>
 <span class="c1"># merge counts data frame to OG data frame</span>
 <span class="n">OG_data_bots</span> <span class="o">=</span> <span class="n">OG_data_bots</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">counts</span><span class="p">,</span> <span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">on</span> <span class="o">=</span> <span class="s1">&#39;text&#39;</span><span class="p">)</span>
@@ -12053,6 +12033,7 @@ IRAhandle_tweets_13.csv
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># identify person who first tweeted</span>
 <span class="c1"># data sorted by tweet and time, and only person who first posted the tweet is marked as the original tweeter</span>
+<span class="c1"># or when it has 0 retweets it is an original poster as well </span>
 <span class="n">OG_tweeter</span> <span class="o">=</span> <span class="n">OG_data_bots</span><span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="s1">&#39;text&#39;</span><span class="p">,</span> <span class="s1">&#39;timestamp&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;text&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">nth</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
 <span class="n">OG_tweeter</span><span class="p">[</span><span class="s1">&#39;OG&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="n">OG_tweeter</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">OG_tweeter</span><span class="p">[</span><span class="s1">&#39;retweets&#39;</span><span class="p">]</span> <span class="o">&gt;</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;OG&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
@@ -12071,19 +12052,7 @@ IRAhandle_tweets_13.csv
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># add the OG poster column to the data</span>
 <span class="n">bots</span> <span class="o">=</span> <span class="n">OG_data_bots</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">OG_tweet</span><span class="p">,</span> <span class="n">how</span> <span class="o">=</span> <span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">on</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">,</span> <span class="s1">&#39;screen_name&#39;</span><span class="p">])</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[32]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># replace NA with 0 and add that if retweets = 0 then OG = 1 (normally not needed but just to make sure)</span>
+<span class="c1"># replace NA with 0 and add that if retweets = 0 then OG = 1 (normally not needed but just to make sure)</span>
 <span class="n">bots</span><span class="p">[</span><span class="s1">&#39;OG&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">bots</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">bots</span><span class="p">[</span><span class="s1">&#39;retweets&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;OG&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
 </pre></div>
@@ -12116,21 +12085,6 @@ IRAhandle_tweets_13.csv
 <h1 id="EDA-UK">EDA UK<a class="anchor-link" href="#EDA-UK">&#182;</a></h1>
 </div>
 </div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[66]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># data set with only bots</span>
-<span class="n">bots</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">],</span> <span class="n">bots</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">bots</span><span class="p">[</span><span class="s1">&#39;timestamp&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;T&#39;</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">str</span>
-<span class="n">bots</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">bots</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">])</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -13968,13 +13922,1399 @@ mean percentage of bot traffic when bot original post due to bots, ergo how many
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Clustering-UK-Bots">Clustering UK Bots<a class="anchor-link" href="#Clustering-UK-Bots">&#182;</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[170]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># tokenising, removing stopwords, hyperlinks and direct mentions</span>
+
+<span class="n">tknzr</span> <span class="o">=</span> <span class="n">TweetTokenizer</span><span class="p">(</span><span class="n">strip_handles</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">reduce_len</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">__cleanText</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">txt</span><span class="p">,</span> <span class="n">all_words_clean</span><span class="p">,</span> <span class="n">all_words_clean_og</span><span class="p">,</span> <span class="n">txt2</span> 
+    <span class="n">all_words</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">txt</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">text</span><span class="p">:</span>
+        <span class="n">sent</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+        <span class="n">sent</span> <span class="o">=</span> <span class="n">tknzr</span><span class="o">.</span><span class="n">tokenize</span><span class="p">(</span><span class="n">sent</span><span class="p">)</span>
+        <span class="n">all_words</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">sent</span><span class="p">)</span>
+        <span class="n">txt</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sent</span><span class="p">)</span>
+    <span class="n">stop</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">stopwords</span><span class="o">.</span><span class="n">words</span><span class="p">(</span><span class="s2">&quot;english&quot;</span><span class="p">))</span>
+    <span class="n">stop</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s1">&#39;...&#39;</span><span class="p">,</span> <span class="s1">&#39;http&#39;</span><span class="p">,</span> <span class="s1">&#39;https&#39;</span><span class="p">,</span> <span class="s1">&#39;rt&#39;</span><span class="p">])</span>
+    <span class="n">all_words_clean</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">all_words</span><span class="p">:</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">word</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">stop</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">word</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">2</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">word</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span><span class="o">!=</span><span class="s1">&#39;http&#39;</span><span class="p">):</span>
+            <span class="n">all_words_clean</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+            
+    <span class="n">all_words_clean_og</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">all_words_clean</span><span class="p">)</span> <span class="c1"># all_words_clean: set of all words that appear in corpus; cleaned</span>
+    
+    <span class="n">txt2</span> <span class="o">=</span> <span class="n">txt</span><span class="p">[:]</span> <span class="c1"># txt2: list of  tweets. Each sublist is one tweet and each word in the tweet is one seperate string. </span>
+    
+
+<span class="c1"># remove all words from tweets that are not in all_words_clean_og</span>
+<span class="c1"># input: tweets is a list of list of tweets with tokenized words: here txt2</span>
+<span class="c1"># output: tweets_clean: list of list where each list is one cleaned tweet as one string</span>
+<span class="k">def</span> <span class="nf">__cleanTweet</span><span class="p">(</span><span class="n">tweets</span><span class="p">):</span> 
+    <span class="k">global</span> <span class="n">tweets_clean</span>
+    <span class="n">tweets_clean</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">tweets</span><span class="p">:</span>
+        <span class="n">resultwords</span>  <span class="o">=</span> <span class="p">[</span><span class="n">word</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">i</span> <span class="k">if</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">all_words_clean_og</span><span class="p">]</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">resultwords</span><span class="p">)</span>
+        <span class="n">tweets_clean</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">result</span><span class="p">])</span> 
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[171]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#clean text and make word vectors with tfidf </span>
+<span class="c1">#if tfidf not wanted just leave out code part and use X instead </span>
+
+<span class="k">def</span> <span class="nf">__word_vector_tfidf</span><span class="p">(</span><span class="n">all_words_clean</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">txt</span><span class="p">):</span>
+    <span class="c1"># all_words_clean: list of all words cleaned </span>
+    <span class="c1"># text: list of tweets. for the relevant data make list of &#39;text&#39; column text = list(data.text).</span>
+    <span class="c1"># txt: tokneized words list of list</span>
+    
+    <span class="k">global</span> <span class="n">X_tfidf</span><span class="p">,</span> <span class="n">tfidf_transformer</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">all_words_clean2</span>
+
+    <span class="n">all_words_clean2</span> <span class="o">=</span> <span class="n">nltk</span><span class="o">.</span><span class="n">FreqDist</span><span class="p">(</span><span class="n">all_words_clean</span><span class="p">)</span>
+    <span class="n">word_features</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">all_words_clean2</span><span class="p">)</span>
+    <span class="n">noX</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+    <span class="n">noFeatures</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">word_features</span><span class="p">)</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">noX</span><span class="p">,</span> <span class="n">noFeatures</span><span class="p">))</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">noX</span><span class="p">):</span>
+        <span class="n">line</span> <span class="o">=</span> <span class="n">txt</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">noFeatures</span><span class="p">):</span>
+            <span class="n">word</span> <span class="o">=</span> <span class="n">word_features</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">line</span><span class="p">:</span>
+                <span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+                
+    <span class="c1"># apply tdidf weighting to bag of words word vector  </span>
+    <span class="n">tfidf_transformer</span> <span class="o">=</span> <span class="n">TfidfTransformer</span><span class="p">()</span>
+    <span class="n">X_tfidf</span> <span class="o">=</span> <span class="n">tfidf_transformer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[182]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">__find_k</span><span class="p">(</span><span class="n">X_tfidf</span><span class="p">):</span>
+    <span class="c1"># X_tfidf: sparse weighted word vector matrix from tfidf_transformer</span>
+
+    <span class="c1"># k means determine k</span>
+    <span class="n">X_tfidf_array</span> <span class="o">=</span> <span class="n">X_tfidf</span><span class="o">.</span><span class="n">A</span>   <span class="c1">#make sparse matrix an array for plotting</span>
+    <span class="n">distortions</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">K</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">15</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">K</span><span class="p">:</span>
+        <span class="n">kmeanModel</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="n">k</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_tfidf</span><span class="p">)</span>
+
+        <span class="n">distortions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">cdist</span><span class="p">(</span><span class="n">X_tfidf</span><span class="o">.</span><span class="n">A</span><span class="p">,</span> <span class="n">kmeanModel</span><span class="o">.</span><span class="n">cluster_centers_</span><span class="p">,</span> <span class="s1">&#39;euclidean&#39;</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span> <span class="o">/</span> <span class="n">X_tfidf</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+ 
+    <span class="c1"># Plot the elbow</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">K</span><span class="p">,</span> <span class="n">distortions</span><span class="p">,</span> <span class="s1">&#39;bx-&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Distortion&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Optimal k, month:&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[173]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">__cluster_km</span><span class="p">(</span><span class="n">num_clusters</span><span class="p">,</span> <span class="n">X_tfidf</span><span class="p">):</span>
+    <span class="c1"># num_cluster: best number of clusterst based on elbow plot </span>
+    <span class="c1"># make the clusters based on the X_tfidf matrix</span>
+    <span class="k">global</span> <span class="n">frame</span><span class="p">,</span> <span class="n">km</span><span class="p">,</span> <span class="n">clusterkm</span><span class="p">,</span> <span class="n">clusters</span><span class="p">,</span> <span class="n">frame_clean</span>
+    <span class="n">km</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span> <span class="o">=</span> <span class="n">num_clusters</span><span class="p">,</span> <span class="n">random_state</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">km</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_tfidf</span> <span class="p">)</span>
+
+    <span class="n">clusterkm</span> <span class="o">=</span> <span class="n">km</span><span class="o">.</span><span class="n">cluster_centers_</span>
+
+    <span class="n">clusters</span> <span class="o">=</span> <span class="n">km</span><span class="o">.</span><span class="n">labels_</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+
+    <span class="c1"># adds cluster number to each tweet in data</span>
+
+    <span class="n">frame</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;tweet_&#39;</span> <span class="o">+</span> <span class="n">month</span><span class="p">])</span>
+    <span class="n">frame</span><span class="p">[</span><span class="s1">&#39;cluster&#39;</span> <span class="o">+</span> <span class="n">month</span><span class="p">]</span> <span class="o">=</span> <span class="n">clusters</span> <span class="c1"># adds the cluster number to the tweets in the data. </span>
+   
+    <span class="n">frame_clean</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">tweets_clean</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;tweet_&#39;</span> <span class="o">+</span> <span class="n">month</span><span class="p">])</span>
+    <span class="n">frame_clean</span><span class="p">[</span><span class="s1">&#39;cluster&#39;</span> <span class="o">+</span> <span class="n">month</span><span class="p">]</span> <span class="o">=</span> <span class="n">clusters</span> <span class="c1"># same data frame with cluster for each tweet but displays the cleaned tweet. less readible</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[255]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># distinct tweets is a data frame that groups all tweets in the clusters </span>
+<span class="c1"># by the tweets and counts their frequency in each cluter</span>
+<span class="c1"># example: tweet &#39;hello vote_leave&#39; apprears 5 times and &#39;vote_leave 4 every&#39; 2 times in cluster 1</span>
+<span class="c1"># there are 2 distinct tweets in cluster 1</span>
+
+<span class="k">def</span> <span class="nf">__distinct_tweets</span><span class="p">(</span><span class="n">frame</span><span class="p">):</span> 
+
+    <span class="k">global</span> <span class="n">distinct_tweets</span>
+    <span class="n">distinct_tweets</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">frame</span><span class="o">.</span><span class="n">groupby</span><span class="p">([(</span><span class="s1">&#39;tweet_&#39;</span><span class="o">+</span><span class="n">month</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;cluster&#39;</span><span class="o">+</span><span class="n">month</span><span class="p">)])</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="o">.</span><span class="n">nlargest</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;counts&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="s2">&quot;cluster&quot;</span><span class="o">+</span><span class="n">month</span><span class="p">,</span> <span class="s2">&quot;counts&quot;</span><span class="p">],</span> <span class="n">ascending</span> <span class="o">=</span> <span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">])</span>
+
+    <span class="n">pd</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">max_colwidth</span> <span class="o">=</span> <span class="mi">130</span>
+    <span class="k">return</span> <span class="n">distinct_tweets</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[191]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">__tweets_per_cluster_summary</span><span class="p">(</span><span class="n">clusters</span><span class="p">,</span> <span class="n">frame</span><span class="p">,</span> <span class="n">km</span><span class="p">,</span> <span class="n">X_tfidf</span><span class="p">,</span> <span class="n">month</span><span class="p">,</span> <span class="n">distinct_tweets</span><span class="p">,</span> <span class="n">side_month</span><span class="p">,</span> <span class="n">clusterkm</span><span class="p">):</span>
+    <span class="c1"># where km is the model and X_tfidf is a word vector matrix</span>
+    <span class="c1"># distinct_tweets the df with distinct tweets, cluster and count</span>
+    <span class="c1"># side_month the origninal data frame for the given month</span>
+    <span class="c1"># clusterkm = km.cluster_centers_</span>
+    <span class="c1"># clusters = km.labels_.tolist() list of the cluster number for each tweet</span>
+    
+    <span class="k">global</span> <span class="n">cluster_summary</span><span class="p">,</span> <span class="n">summary</span><span class="p">,</span> <span class="n">cluster_dist</span><span class="p">,</span> <span class="n">cluster_inertia</span>
+    <span class="n">clusters</span> <span class="o">=</span> <span class="n">km</span><span class="o">.</span><span class="n">labels_</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+    <span class="n">cluster_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">clusters</span><span class="p">)</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;number_tweets&quot;</span><span class="p">:</span> <span class="n">cluster_df</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()})</span> <span class="c1"># number of tweets in each cluster</span>
+    <span class="n">unique</span> <span class="o">=</span> <span class="n">frame</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;cluster&#39;</span><span class="o">+</span><span class="n">month</span><span class="p">)</span><span class="o">.</span><span class="n">nunique</span><span class="p">()</span> <span class="c1"># number of different tweets in each cluster</span>
+    <span class="n">unique2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">unique</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">cluster_summary</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">count</span><span class="p">,</span> <span class="n">unique2</span><span class="p">,</span> <span class="n">left_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">right_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="c1"># summary with number of tweets and number of distinct tweets in each cluster</span>
+    
+    <span class="c1"># now add within-cluster distance (=inertia) for each cluster</span>
+    <span class="c1"># inertia per cluster</span>
+    <span class="n">distances</span> <span class="o">=</span> <span class="n">km</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_tfidf</span><span class="p">)</span> <span class="c1"># Compute clustering and transform X_tfidf to cluster-distance space.</span>
+    <span class="n">inertia_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">distances</span><span class="p">)</span>
+    <span class="n">inertia_df</span><span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">km</span><span class="o">.</span><span class="n">labels_</span>
+    <span class="n">inertia_df</span><span class="p">[</span><span class="s1">&#39;dist&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">inertia_df</span><span class="p">)):</span>
+        <span class="n">l</span> <span class="o">=</span> <span class="n">inertia_df</span><span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">][</span><span class="n">row</span><span class="p">]</span>
+        <span class="n">inertia_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">row</span><span class="p">,</span> <span class="s1">&#39;dist&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">inertia_df</span><span class="p">[</span><span class="n">l</span><span class="p">][</span><span class="n">row</span><span class="p">]</span>
+    <span class="c1"># inertia_df # selects the distance from each point to it&#39;s cluster centroid</span>
+    <span class="n">cluster_inertia</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">inertia_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;label&#39;</span><span class="p">])[</span><span class="s1">&#39;dist&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span> <span class="c1"># returns cluster inertia for each cluster</span>
+    <span class="n">cluster_summary</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">cluster_summary</span><span class="p">,</span> <span class="n">cluster_inertia</span><span class="p">,</span> <span class="n">left_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">right_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">cluster_summary</span><span class="p">[</span><span class="s1">&#39;cluster&#39;</span><span class="o">+</span><span class="n">month</span><span class="p">]</span> <span class="o">=</span> <span class="n">cluster_summary</span><span class="o">.</span><span class="n">index</span>
+    <span class="n">cluster_summary</span> <span class="o">=</span> <span class="n">cluster_summary</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;tweet_&#39;</span><span class="o">+</span><span class="n">month</span><span class="p">:</span><span class="s1">&#39;distinct_tweets&#39;</span><span class="p">})</span>
+    <span class="c1"># cluster_summary: summary including the number of tweets, number of distinct tweets and the within-cluster distance </span>
+    
+    
+    
+    <span class="c1">#cross table with distances between each cluster</span>
+    <span class="n">cluster_dist</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">euclidean_distances</span><span class="p">(</span><span class="n">clusterkm</span><span class="p">))</span>
+    <span class="n">cluster_dist</span><span class="p">[</span><span class="s1">&#39;distance_sum&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cluster_dist</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[178]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># for random week prep data and then run the find k functinon</span>
+<span class="n">month</span> <span class="o">=</span> <span class="s1">&#39;all&#39;</span>
+<span class="n">text</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">only_bots</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+<span class="n">__cleanText</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+<span class="n">__cleanTweet</span><span class="p">(</span><span class="n">txt2</span><span class="p">)</span>
+<span class="n">__word_vector_tfidf</span><span class="p">(</span><span class="n">all_words_clean</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">txt</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[183]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">__find_k</span><span class="p">(</span><span class="n">X_tfidf</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea ">
+<img src="data:image/png;base64,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
+"
+>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[256]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">k</span> <span class="o">=</span> <span class="mi">8</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[257]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">__cluster_km</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">X_tfidf</span><span class="p">)</span>
+<span class="n">__distinct_tweets</span><span class="p">(</span><span class="n">frame</span><span class="p">)</span>
+<span class="n">__tweets_per_cluster_summary</span><span class="p">(</span><span class="n">clusters</span><span class="p">,</span> <span class="n">frame</span><span class="p">,</span> <span class="n">km</span><span class="p">,</span> <span class="n">X_tfidf</span><span class="p">,</span> <span class="n">month</span><span class="p">,</span> <span class="n">distinct_tweets</span><span class="p">,</span> <span class="n">only_bots</span><span class="p">,</span> <span class="n">clusterkm</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[258]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">cluster_summary</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;cluster&#39;</span><span class="o">+</span><span class="n">month</span><span class="p">),</span> <span class="n">distinct_tweets</span><span class="p">)</span> 
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+<div class="output_html rendered_html output_subarea ">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>number_tweets</th>
+      <th>distinct_tweets</th>
+      <th>dist</th>
+      <th>clusterall</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>176</td>
+      <td>87</td>
+      <td>171.842238</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>113</td>
+      <td>86</td>
+      <td>108.994230</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>51</td>
+      <td>37</td>
+      <td>48.129935</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>93</td>
+      <td>84</td>
+      <td>86.251555</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>21</td>
+      <td>4</td>
+      <td>13.670846</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>147</td>
+      <td>106</td>
+      <td>144.154601</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>36</td>
+      <td>8</td>
+      <td>31.777576</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>121</td>
+      <td>112</td>
+      <td>117.462350</td>
+      <td>7</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+<div class="output_html rendered_html output_subarea ">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>tweet_all</th>
+      <th>clusterall</th>
+      <th>counts</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>Don't fret if you hear 2 sheets of blood covered sandpaper being scraped today, it's just Rupert Murdoch rubbing his hands tog...</td>
+      <td>0</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>how am i going to afford my fitness gram pacer test now, #brexit?</td>
+      <td>0</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Congratulations to my @HuffPostUK friends on this AMAZING headline. Bravo. Bravo. Bravo. #Brexit</td>
+      <td>0</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>More than 1 million sign online petition demanding a second EU referendum after #Brexit vote.</td>
+      <td>0</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>The next #Brexit question - who'll invest $130 billion to keep Britain's lights on?</td>
+      <td>0</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>"There are lies, damned lies, and statistics." An economist's guide to #Brexit</td>
+      <td>0</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>#Brexit live: Jeremy Corbyn loses no confidence motion #Labour\n\n</td>
+      <td>0</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>A vote against Brexit isn't the end of Brexit. Just the opposite.</td>
+      <td>0</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>Everybody is obsessed with #EUref today\nSo let's play #ReasonsToLeaveEU</td>
+      <td>0</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>GLOBAL MARKETS-Brexit fears drag on world stocks, boost yen: * Sterling down broadly, oil dro... via @josephjett</td>
+      <td>0</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>Global markets have lost $3 trillion since #Brexit vote.\n\n#Malawi's share of that loss is probably $3</td>
+      <td>0</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>If it is a thing, it's probably an analogy for #Brexit \n</td>
+      <td>0</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>JUST IN: Draghi sees #Brexit cutting Euro GDP by as much as 0.5%, document shows</td>
+      <td>0</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>Mario Draghi avoids #Brexit as he calls for greater alignment of monetary policies</td>
+      <td>0</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>Trump: #Brexit will not affect the US</td>
+      <td>0</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>4 charts showing what #Brexit concerns are doing to European stocks</td>
+      <td>0</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>Farage celebrating like a man who's just made a killing on the International Money Market. #brexit</td>
+      <td>0</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>45</th>
+      <td>WATCH LIVE: UKIP leader and #Brexit campaigner Nigel Farage joins us now</td>
+      <td>0</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>48</th>
+      <td>Are you a black Brit who voted against #Brexit. If so, we may ask you to write about @Fusion. @ me, if you are interested.</td>
+      <td>0</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>50</th>
+      <td>Maybe the Mayans were off by 4 years? #Brexit #whatishappening</td>
+      <td>0</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>52</th>
+      <td>Spooked by #Brexit? Here's what to do now</td>
+      <td>0</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>53</th>
+      <td>Wow! I got to experience a great Black President and watching the global shift from patriarchy. . . #myblackroots #blacklivesm...</td>
+      <td>0</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>55</th>
+      <td>#EU Commissioner: One World Government, i.e. #Agenda21 Now Being Implemented #CCOT #NWO #UKIP #EDL  #climate #Brexit</td>
+      <td>0</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>58</th>
+      <td>#ReasonsToLeaveEU Controlled LEGAL Immigration rather than ILLEGAL Immigration. More control over own laws. #EUref</td>
+      <td>0</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>#Brexit: What happens now that the U.K. has voted to leave the EU?</td>
+      <td>1</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>Trump to visit UK day after Brexit vote</td>
+      <td>1</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>Brexit live: 1 in 4 Labour voters less likely to vote Labour after EU referendum, internal survey shows</td>
+      <td>1</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>EU calls for an "orderly" #Brexit, at historic meeting without the U.K.</td>
+      <td>1</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>47</th>
+      <td>After Brexit vote, what happens next in UK?</td>
+      <td>1</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>49</th>
+      <td>By @ukipmeps - EU policies have supported bankers not ordinary people - Raymond Finch MEP:  #UKIP #no2eu #tcot</td>
+      <td>1</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>54</th>
+      <td>#Brexit UK to split from the #EU. How will aftermath effect #Israel's long-run bilateral rel. with EU states?</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>UPDATE 1-Follow the rules on banks, EU tells Italy, Brexit no excuse: BRUSSELS, June 29 (Reut... via @josephjett</td>
+      <td>2</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>38</th>
+      <td>Italy economy minister warns about Brexit, Trump victory in US: ROME, June 1 (Reuters) - If B... via @josephjett</td>
+      <td>2</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>#politics What Stands Between Trump and a US Brexit Effect</td>
+      <td>3</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>59</th>
+      <td>#politics Brexit: Do you #Regrexit?</td>
+      <td>3</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>EMERGING MARKETS-Latam currencies jump on bargain hunting after Brexit selloff: By Bruno Fede... via @josephjett</td>
+      <td>4</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>EMERGING MARKETS-Latam currencies, stocks slide after Brexit vote: By Bruno Federowski\n    SA... via @josephjett</td>
+      <td>4</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>EMERGING MARKETS-Latam stocks, currencies down as Brexit worries reemerge: By Bruno Federowsk... via @josephjett</td>
+      <td>4</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>EMERGING MARKETS-Latam stocks, currencies up for 2nd day as Brexit woes fade: By Bruno Federo... via @josephjett</td>
+      <td>4</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>#ThingsIWontBelieve Brexit will be good for Britain.</td>
+      <td>5</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>.@felixsalmon live now on brexit feels</td>
+      <td>5</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>The leftwing case for Brexit | Paul Mason</td>
+      <td>5</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>Brexit live: Angela Eagle touted as unity candidate in Labour leadership crisis</td>
+      <td>5</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>Did Britain just lose its last friend in the EU? Merkel warns Britain to forget about any special favors: #Brexit</td>
+      <td>5</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>39</th>
+      <td>KISSINGER BLAMES OBAMA FOR BREXIT!</td>
+      <td>5</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>40</th>
+      <td>Overview of Brexit polls.</td>
+      <td>5</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>42</th>
+      <td>Today's must-read: race and the Brexit, including Nigel Farage's own, racist words:</td>
+      <td>5</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>43</th>
+      <td>Trump hopes for Brexit boost:</td>
+      <td>5</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>46</th>
+      <td>What do Germans think about Brexit? They pity us</td>
+      <td>5</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>56</th>
+      <td>#ReasonsToLeaveEU  \nBrexit: It's not you, it's me.</td>
+      <td>5</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>57</th>
+      <td>#ReasonsToLeaveEU ...because Lily Allen thinks I must be a RW racist!? ;D #VoteLeave</td>
+      <td>5</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>Carney Pledges Funding to Stabilize Markets After Brexit Turmoil via @business</td>
+      <td>6</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>UPDATE 1-U.S. municipal bond yields tumble to record lows on Brexit vote: NEW YORK, June 24 (... via @josephjett</td>
+      <td>6</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>Brexit: Katharine Viner and Gary Younge answer your questions - Q&amp;amp;A &amp;lt; ask a question now via @guardianopinion</td>
+      <td>6</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>Russian minister doesn't think Brexit will affect privatisation deals: MOSCOW, June 24 (Reute... via @josephjett</td>
+      <td>6</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>Brexit: Katharine Viner and Gary Younge answer your questions - Q&amp;amp;A</td>
+      <td>6</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>44</th>
+      <td>UPDATE 1-Brexit fears reopen euro zone bond market rift in echoes of crisis: * Cost to insure... via @josephjett</td>
+      <td>6</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>51</th>
+      <td>REFILE-UPDATE 1-Bank of England's Carney, under fresh fire, defends message on Brexit risk: L... via @josephjett</td>
+      <td>6</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>UK poll finds just 25% believe Brexit would reduce living standards</td>
+      <td>7</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>41</th>
+      <td>POLL: what are your biggest Brexit fears?: With the referendum creeping nearer, we decided t... #capital #markets</td>
+      <td>7</td>
+      <td>4</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[260]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># number of words used for clustering across the whole corpus</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">all_words_clean_og</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[260]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>1484</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="most-frequent-hashtags">most frequent hashtags<a class="anchor-link" href="#most-frequent-hashtags">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[224]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">top_tag</span><span class="p">(</span><span class="n">data</span><span class="p">):</span> <span class="c1"># for data you can put the full data set, the specific month etc</span>
+    <span class="k">global</span> <span class="n">top_tags</span><span class="p">,</span> <span class="n">top_tags_df</span><span class="p">,</span> <span class="n">text_full_data</span>
+    <span class="n">text_full_data</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;text&quot;</span><span class="p">])</span>
+    <span class="n">top_tags</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">tweet</span> <span class="ow">in</span> <span class="n">text_full_data</span><span class="p">:</span>
+        <span class="n">tag</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;#(\w+)&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">tweet</span><span class="p">))</span>
+        <span class="n">top_tags</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tag</span><span class="p">)</span>
+    
+    <span class="n">top_tags_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">Counter</span><span class="p">(</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">itertools</span><span class="o">.</span><span class="n">chain</span><span class="o">.</span><span class="n">from_iterable</span><span class="p">(</span><span class="n">top_tags</span><span class="p">)))</span><span class="o">.</span><span class="n">items</span><span class="p">()))</span>
+    <span class="n">top_tags_df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;hashtag&#39;</span><span class="p">,</span> <span class="s2">&quot;count&quot;</span><span class="p">]</span>
+    <span class="n">top_tags_df</span> <span class="o">=</span> <span class="n">top_tags_df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;count&#39;</span><span class="p">,</span> <span class="n">ascending</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># frequency chart of most used hashtag </span>
+
+<span class="k">def</span> <span class="nf">plot_tag_occ</span> <span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">plot_title</span><span class="p">):</span> 
+    <span class="c1"># for plot title insert plot title as string</span>
+
+    <span class="n">top_tag</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="n">counts</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">Counter</span><span class="p">(</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">itertools</span><span class="o">.</span><span class="n">chain</span><span class="o">.</span><span class="n">from_iterable</span><span class="p">(</span><span class="n">top_tags</span><span class="p">)))</span><span class="o">.</span><span class="n">most_common</span><span class="p">(</span><span class="mi">15</span><span class="p">))</span>
+
+    <span class="n">labels</span><span class="p">,</span> <span class="n">values</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">counts</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
+
+    <span class="c1"># sort your values in descending order</span>
+    <span class="n">indSort</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">values</span><span class="p">)[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    
+    <span class="c1"># rearrange your data</span>
+    <span class="n">labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">labels</span><span class="p">)[</span><span class="n">indSort</span><span class="p">]</span>
+    <span class="n">values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">values</span><span class="p">)[</span><span class="n">indSort</span><span class="p">]</span>
+
+    <span class="n">indexes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">labels</span><span class="p">))</span>
+
+    <span class="n">bar_width</span> <span class="o">=</span> <span class="mf">0.35</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">indexes</span><span class="p">,</span> <span class="n">values</span><span class="p">)</span>
+
+    <span class="c1"># add labels</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">indexes</span> <span class="o">+</span> <span class="n">bar_width</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="s1">&#39;vertical&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">plot_title</span><span class="p">)</span> <span class="c1"># change that title</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[225]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plot_tag_occ</span> <span class="p">(</span><span class="n">only_bots</span><span class="p">,</span> <span class="s1">&#39;most frequent bot hashtags&#39;</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea ">
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAXoAAAFhCAYAAAB+sWHIAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
+AAALEgAACxIB0t1+/AAAADl0RVh0U29mdHdhcmUAbWF0cGxvdGxpYiB2ZXJzaW9uIDIuMS4wLCBo
+dHRwOi8vbWF0cGxvdGxpYi5vcmcvpW3flQAAIABJREFUeJzt3XecZFWd/vHPQw6CgAxIHsABRFcR
+R1ABA6iromAABRMqyqqo7KoI6q64uK7g+hPBgIsBcUWCEVYFRRRQEXDIIKBIHEEYMgtKfH5/nFNM
+TdMz3X1vNdVz+3m/Xv3qqnurTn27qvpbp06UbSIioruWGHYAERExuZLoIyI6Lok+IqLjkugjIjou
+iT4iouOS6CMiOi6JPiaNpE0lnS/pbknvH3Y8gyTprZJ+M4nlXyPpRQMuc1JjjqkriT4akfQJSd8e
+42YfBk6zvZLtwx6LuAZFkiU9aZLKHs9z95iTdJqkdww7jhi8JPqYTBsAly7spKQlH8NYIqatJPoO
+ql/795V0kaR7JH1d0pqSTqrNKL+QtGrf7XeSdKmkO2qt7sl95/aT9Jd6vysk7SDppcBHgddL+j9J
+F44Swy+BFwJfrLfZRNI3JR0u6aeS7gFeKGlZSZ+VdJ2kmyR9RdLyfeXsK+lGSTdIent/TXtkDXRk
+04SkzSSdIum2Gvvr+s59U9KXJP2k/m1nS9q4njuj3uzCGvvrF/5U6wuS7pR0uaQd+k6sLenE+thX
+SnpnPT7mc9dni/oa3inpOEnL1TJWlfRjSfMk3V4vrzviebiq/l1XS3rjiKA/W+93taSX1WOfArbr
+e72+WI8fKul6SXdJOlfSdn3lLC/pqFrWZZI+LGlu3/lHvXcW8bfGZLKdn479ANcAZwFrAusANwPn
+Ac8AlgV+CRxQb7sJcA/wYmBpSnPLlcAywKbA9cDa9bYzgY3r5U8A3x4jjtOAd/Rd/yZwJ7ANpZKx
+HPB54ERgNWAl4H+BT9fbvxS4CXgqsCLwHcDAkxZS/luB39TLK9bY3wYsBWwJ3AI8pS+W24Ct6vmj
+gWP7ynrkcRbyt70VeBD4l/q8vb7+bavV86cDX65/4xbAPGCHCTx31wDnAGvX5+Yy4F313BOA1wIr
+1Ofsu8CP+v7uu4BN6/W1+v7mtwIPAO8ElgTeDdwAaLTnsx57U328pYAPAn8FlqvnDqp/56rAusBF
+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
+mitpz0Xc/KfAVcCVwFeB9wwkyoiIaGzMphvbu49xfmbfZQN7tw8rIiIGJTNjIyI6Lok+IqLjkugj
+IjouiT4iouOS6CMiOi6JPiKi45LoIyI6Lok+IqLjkugjIjouiT4iouOS6CMiOi6JPiKi45LoIyI6
+Lok+IqLjkugjIjouiT4iouPGs8PUNyTdLOmSvmP/JelySRdJ+qGkVfrOfUTSlZKukPSPkxV4RESM
+z3hq9N8EXjri2CnAU20/Dfgj8BEASZsDuwFPqff5sqQlBxZtRERM2JiJ3vYZwG0jjv3c9oP16lnA
+uvXyzsCxtu+zfTVl79itBhhvRERM0CDa6N8OnFQvrwNc33dubj32KJL2kjRH0px58+YNIIyIiBhN
+q0Qv6WPAg8DRvUOj3Myj3df2EbZn2549Y8aMNmFERMQiLNX0jpL2AF4B7GC7l8znAuv13Wxd4Ibm
+4UVERFuNavSSXgrsB+xk+96+UycCu0laVtKGwCzgnPZhRkREU2PW6CUdA7wAWF3SXOAAyiibZYFT
+JAGcZftdti+VdDzwB0qTzt62H5qs4CMiYmxjJnrbu49y+OuLuP2ngE+1CSoiIgYnM2MjIjouiT4i
+ouOS6CMiOi6JPiKi45LoIyI6Lok+IqLjkugjIjouiT4iouOS6CMiOi6JPiKi45LoIyI6Lok+IqLj
+kugjIjouiT4iouOS6CMiOi6JPiKi45LoIyI6bsxEL+kbkm6WdEnfsdUknSLpT/X3qvW4JB0m6UpJ
+F0nacjKDj4iIsY2nRv9N4KUjju0PnGp7FnBqvQ7wMsqG4LOAvYDDBxNmREQ0NWait30GcNuIwzsD
+R9XLRwGv6jv+LRdnAatIWmtQwUZExMSNuTn4Qqxp+0YA2zdKWqMeXwe4vu92c+uxG0cWIGkvSq2f
+9ddfv2EYi4+Z+/+k1f2vOWjHAUUSEdPNoDtjNcoxj3ZD20fYnm179owZMwYcRkRE9DRN9Df1mmTq
+75vr8bnAen23Wxe4oXl4ERHRVtNEfyKwR728B3BC3/G31NE3zwbu7DXxRETEcIzZRi/pGOAFwOqS
+5gIHAAcBx0vaE7gO2LXe/KfAy4ErgXuBt01CzBERMQFjJnrbuy/k1A6j3NbA3m2DioiIwcnM2IiI
+jkuij4jouCT6iIiOS6KPiOi4JPqIiI5Loo+I6Lgk+oiIjkuij4jouCT6iIiOS6KPiOi4JPqIiI5L
+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
+kugjIjru/wNvKZuxWJEIwgAAAABJRU5ErkJggg==
+"
+>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="US">US<a class="anchor-link" href="#US">&#182;</a></h1>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[248]:</div>
+<div class="prompt input_prompt">In&nbsp;[217]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">US_fake_news</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;US_one_month.csv&#39;</span><span class="p">)</span>
@@ -13988,7 +15328,7 @@ mean percentage of bot traffic when bot original post due to bots, ergo how many
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[250]:</div>
+<div class="prompt input_prompt">In&nbsp;[218]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">screen_names_US</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">US_fake_news</span><span class="p">[</span><span class="s1">&#39;screen_name_low&#39;</span><span class="p">]))</span>
@@ -14012,13 +15352,13 @@ mean percentage of bot traffic when bot original post due to bots, ergo how many
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[250]:</div>
+<div class="prompt output_prompt">Out[218]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>[&#39;ten_gop&#39;, &#39;crystal1johnson&#39;, &#39;pamela_moore13&#39;, &#39;southlonestar&#39;]</pre>
+<pre>[&#39;southlonestar&#39;, &#39;crystal1johnson&#39;, &#39;ten_gop&#39;, &#39;pamela_moore13&#39;]</pre>
 </div>
 
 </div>
@@ -14029,7 +15369,7 @@ mean percentage of bot traffic when bot original post due to bots, ergo how many
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[219]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">bot_df_US</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">bot_acc_US</span><span class="p">)</span>
@@ -14039,6 +15379,371 @@ mean percentage of bot traffic when bot original post due to bots, ergo how many
 </pre></div>
 
 </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[221]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">US_bots</span><span class="p">[</span><span class="n">US_bots</span><span class="p">[</span><span class="s1">&#39;bot&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span> 
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[221]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>tweet_id</th>
+      <th>created_at</th>
+      <th>retweet_count</th>
+      <th>text</th>
+      <th>user_screen_name</th>
+      <th>is_fake_news_1</th>
+      <th>is_fake_news_2</th>
+      <th>fake_news_category_1</th>
+      <th>fake_news_category_2</th>
+      <th>user_verified</th>
+      <th>...</th>
+      <th>user_followers_count</th>
+      <th>user_favourites_count</th>
+      <th>tweet_source</th>
+      <th>geo_coordinates_available</th>
+      <th>num_hashtags</th>
+      <th>num_mentions</th>
+      <th>num_urls</th>
+      <th>num_media</th>
+      <th>screen_name_low</th>
+      <th>bot</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1511</th>
+      <td>779855189431967000</td>
+      <td>Sun Sep 25 01:29:00 +0000 2016</td>
+      <td>4733</td>
+      <td>Every time you RT this pic it will notify @HillaryClinton and she will see the face of #Benghazi victim's mom Patri… https://t...</td>
+      <td>TEN_GOP</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>False</td>
+      <td>...</td>
+      <td>53875</td>
+      <td>574</td>
+      <td>TweetDeck</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2</td>
+      <td>1</td>
+      <td>0</td>
+      <td>ten_gop</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>2689</th>
+      <td>794257640884989000</td>
+      <td>Thu Nov 03 19:19:12 +0000 2016</td>
+      <td>1605</td>
+      <td>Melania Trump gave a campaign speech for her husband @realDonaldTrump: '‘Make America Great Again’ is not just some… https://t...</td>
+      <td>Pamela_Moore13</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>False</td>
+      <td>...</td>
+      <td>24578</td>
+      <td>451</td>
+      <td>Twitter Web Client</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2</td>
+      <td>1</td>
+      <td>0</td>
+      <td>pamela_moore13</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>3394</th>
+      <td>796053302693822000</td>
+      <td>Tue Nov 08 18:14:31 +0000 2016</td>
+      <td>29072</td>
+      <td>🚨BREAKING: Machine Refuses to Allow Vote For Trump in Pennsylvania!!  RT the hell out of it! #VoterFraud  #voted… https://t.co...</td>
+      <td>TEN_GOP</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>False</td>
+      <td>...</td>
+      <td>52348</td>
+      <td>564</td>
+      <td>Twitter Web Client</td>
+      <td>2</td>
+      <td>2</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>ten_gop</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>3405</th>
+      <td>796055138406371000</td>
+      <td>Tue Nov 08 18:21:49 +0000 2016</td>
+      <td>1230</td>
+      <td>This young woman cried after Barack Obama's election in 2008.  But how does she feel now 8 years later?… https://t.co/gNS0mc7IZ8</td>
+      <td>Crystal1Johnson</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>False</td>
+      <td>...</td>
+      <td>21480</td>
+      <td>248</td>
+      <td>Twitter Web Client</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>crystal1johnson</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>3419</th>
+      <td>796059451035971000</td>
+      <td>Tue Nov 08 18:38:57 +0000 2016</td>
+      <td>1028</td>
+      <td>Every American has a chance to strengthen our freedom with every vote!  #Voted #ElectionDay https://t.co/gfWwQXk9Im</td>
+      <td>TEN_GOP</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>False</td>
+      <td>...</td>
+      <td>53055</td>
+      <td>574</td>
+      <td>TweetDeck</td>
+      <td>2</td>
+      <td>2</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>ten_gop</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>3436</th>
+      <td>796063894934605000</td>
+      <td>Tue Nov 08 18:56:37 +0000 2016</td>
+      <td>1829</td>
+      <td>🚨BREAKING: reports of #VoterFraud in Philly.. 'Instructional ballot' being handed out inside polling stations‼️… https://t.co/...</td>
+      <td>TEN_GOP</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>False</td>
+      <td>...</td>
+      <td>52570</td>
+      <td>574</td>
+      <td>TweetDeck</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>ten_gop</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>3500</th>
+      <td>796079619971674000</td>
+      <td>Tue Nov 08 19:59:06 +0000 2016</td>
+      <td>1119</td>
+      <td>Show Twitter that high energy ENTHUSIASM is on our side!   RT if you #voted for TRUMP!   #ElectionDay https://t.co/FeZ5HFgr0p</td>
+      <td>TEN_GOP</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>False</td>
+      <td>...</td>
+      <td>52348</td>
+      <td>564</td>
+      <td>Twitter Web Client</td>
+      <td>2</td>
+      <td>2</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>ten_gop</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>3504</th>
+      <td>796080813607714000</td>
+      <td>Tue Nov 08 20:03:51 +0000 2016</td>
+      <td>1193</td>
+      <td>This vet passed away last month before he could vote for Trump.. Here he is in his #MAGA hat..   #voted #ElectionDay https://t...</td>
+      <td>TEN_GOP</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>False</td>
+      <td>...</td>
+      <td>52348</td>
+      <td>564</td>
+      <td>TweetDeck</td>
+      <td>3</td>
+      <td>3</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>ten_gop</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>3557</th>
+      <td>796096570030780000</td>
+      <td>Tue Nov 08 21:06:27 +0000 2016</td>
+      <td>1210</td>
+      <td>🚨VoterFraud: Philly Democrat Judge of Elections inside voting booth with voter‼️  #ElectionDay #IVoted (Via… https://t.co/inxE...</td>
+      <td>TEN_GOP</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>False</td>
+      <td>...</td>
+      <td>52350</td>
+      <td>564</td>
+      <td>Twitter Web Client</td>
+      <td>2</td>
+      <td>2</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>ten_gop</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>3569</th>
+      <td>796099607189131000</td>
+      <td>Tue Nov 08 21:18:31 +0000 2016</td>
+      <td>6747</td>
+      <td>🚨WOW: another proof of #VoterFraud!! Machine refuses to allow vote for Trump!!  RT b/c Media will never report this… https://t...</td>
+      <td>TEN_GOP</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>False</td>
+      <td>...</td>
+      <td>52347</td>
+      <td>564</td>
+      <td>Twitter Web Client</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>ten_gop</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>3712</th>
+      <td>796151585999122000</td>
+      <td>Wed Nov 09 00:45:04 +0000 2016</td>
+      <td>1114</td>
+      <td>Right now in Texas: #ElectionNight https://t.co/NDhM6oIWdm</td>
+      <td>Pamela_Moore13</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>False</td>
+      <td>...</td>
+      <td>24157</td>
+      <td>447</td>
+      <td>Twitter Web Client</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>pamela_moore13</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>6487</th>
+      <td>810617297027141000</td>
+      <td>Sun Dec 18 22:46:38 +0000 2016</td>
+      <td>1517</td>
+      <td>Larry Lindsey, HERO marine, passed away today. In his last message he thanks @realdonaldtrump for giving us hope. R… https://t...</td>
+      <td>SouthLoneStar</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>False</td>
+      <td>...</td>
+      <td>25570</td>
+      <td>261</td>
+      <td>Twitter Web Client</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2</td>
+      <td>1</td>
+      <td>0</td>
+      <td>southlonestar</td>
+      <td>1.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>12 rows × 21 columns</p>
+</div>
+</div>
+
+</div>
+
 </div>
 </div>
 
