@@ -1,0 +1,14 @@
+#Data
+container
+
+#Other
+.DS_Store
+.DS_Store?
+.Docker
+.requirements.txt
+
+#Python
+__pycache__
+.pytest_cache
+.ipynb_checkpoints
+.run.py
